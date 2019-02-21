@@ -1,0 +1,59 @@
+<script language = "JavaScript">
+
+function verify()
+{
+	
+
+	num1 = parseFloat (form1.num1.value);
+	num2 = parseFloat (form1.num2.value);
+	guess = parseFloat (form1.guess.value);
+
+	if(guess == num1 + num2)
+	
+	   document.form1.result.value = "Correct";
+	
+	else
+	
+	   document.form1.result.value = "Incorrect";
+	
+}
+
+function generateNumbers()
+{
+	if(form1.skill[0].checked) {
+	LB = 1;
+	UP = 10;
+	}
+	else{
+	LB = -10;
+	UB = 10;
+	}
+	num1 = Math.floor((UB - LB + 1) * Math.random()) + LB;
+	document.form1.num1.value = num1;
+	num2 = Math.floor((UB - LB + 1) * Math.random()) + LB;
+	document.form1.num2.value = num2;
+	document.form1.guess.value = "";
+	document.form1.result.value = "";
+	
+}
+</script>
+
+<form name = "form1" >
+Skill level: <br/>
+<input type = "radio" name = "skill" value = "beginner" checked>
+Beginner (1 to 10) <br/r>
+<input type = "radio" name = "skill" value = "advanced" >
+Advanced (-10 to 10) <p>
+<input type = "button" onclick = "generateNumbers()" value = "Play" >
+<p>
+Number 1: <input type = "text" name = "num1" size = "5" > <br/>
+<p>
+Number 2: <input type = "text" name = "num2" size = "5" > <br/>
+<br/>
+Guess: <input type = "text" name = "guess" size = "5">
+<input type = "button" onclick = "verify()" value = "verify" />
+<br/>
+<p>
+<input type = "text" name = "result" size = "8"/>
+
+</form>
